@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Greet } from "../../wailsjs/go/main/App";
 import logo from '../assets/images/logo-universal.png';
 import IMGItemBox from '../components/itemimg';
+import gif from '../assets/fish-spinning.gif'
 
 function Home() {
 
@@ -17,7 +18,9 @@ function Home() {
 
     return (
         <div>
-            <IMGItemBox imgurl={logo} />
+            <IMGItemBox 
+                imgurl={logo}
+                gifurl={gif} />
         </div>
     )
 }
