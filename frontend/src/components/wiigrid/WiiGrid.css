@@ -1,0 +1,15 @@
+.w-grid-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    column-gap: 10px;
+    row-gap: 5px;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+
+.w-grid-item {
+    width: 100%;
+    height: 100%;
+    background-color: brown;
+}
