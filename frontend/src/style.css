@@ -30,5 +30,5 @@ body {
     height: 90px;
     border-width: 10px;
     border-color: pink;
-
+    border-style: solid;
 }
