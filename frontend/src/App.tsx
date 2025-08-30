@@ -1,27 +1,33 @@
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 import logo from './assets/images/logo-universal.png';
 import './App.css';
-import {Greet} from "../wailsjs/go/main/App";
+import { Greet } from "../wailsjs/go/main/App";
+import Home from './pages/Home'
+import TabBar from './components/TabBar';
+import cursor from './assets/nightsintodreams/NightsIntoDreams/cursor/cursor.cur'
 
 function App() {
-    const [resultText, setResultText] = useState("Please enter your name below 👇");
-    const [name, setName] = useState('');
-    const updateName = (e: any) => setName(e.target.value);
-    const updateResultText = (result: string) => setResultText(result);
 
-    function greet() {
-        Greet(name).then(updateResultText);
-    }
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (document.hasFocus()) {
+                document.documentElement.style.cursor = `url(${cursor}), auto`;
+                document.body.style.cursor = `url(${cursor}), auto`;
+            } else {
+                document.documentElement.style.cursor = 'default';
+                document.body.style.cursor = 'default';
+            }
+        }, 500);
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
+
 
     return (
-        <div id="App">
-            <img src={logo} id="logo" alt="logo"/>
-            <div id="result" className="result">{resultText}</div>
-            <div id="input" className="input-box">
-                <input id="name" className="input" onChange={updateName} autoComplete="off" name="input" type="text"/>
-                <button className="btn" onClick={greet}>Greet</button>
-            </div>
-        </div>
+        <>
+            <TabBar />
+            <Home />
+        </>
     )
 }
 

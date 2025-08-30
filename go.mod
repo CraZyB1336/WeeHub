@@ -1,4 +1,4 @@
-module myproject
+module Weehub
 
 go 1.23
 
@@ -32,5 +32,3 @@ require (
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
 )
-
-// replace github.com/wailsapp/wails/v2 v2.10.1 => C:\Users\david\go\pkg\mod

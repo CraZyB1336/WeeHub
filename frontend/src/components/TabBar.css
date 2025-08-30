@@ -1,0 +1,17 @@
+#TabBar {
+    height: 20px;
+    --wails-draggable: drag;
+    background: white;
+    color: black;
+    display: flex;
+}
+
+#Testing {
+    flex: 1;
+}
+
+#CloseButton {
+    width: 20px;
+    background: aqua;
+    margin-left: auto;
+}
