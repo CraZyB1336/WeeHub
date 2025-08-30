@@ -7,7 +7,7 @@ function WiiGridLayout() {
     
     return (
         <>
-            <article className="w-grid-container">
+            <div className="w-grid-container">
                 <div className="w-grid-item"></div>
                 <div className="w-grid-item"></div>
                 <div className="w-grid-item"></div>
@@ -17,12 +17,12 @@ function WiiGridLayout() {
                 <div className="w-grid-item"></div>
                 <div className="w-grid-item"></div>
                 <div className="w-grid-item"></div>
-                
+
                 <div className="w-grid-item"></div>
                 <div className="w-grid-item"></div>
                 <div className="w-grid-item"></div>
                 <div className="w-grid-item"></div>
-            </article>
+            </div>
         </>
     );
 }

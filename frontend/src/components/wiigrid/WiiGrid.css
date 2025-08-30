@@ -1,10 +1,6 @@
-* {
-   margin: 0;
-   padding: 0; 
-}
-
 .w-grid-container {
     height: 100vh;
+    width: 100vw;
     display: grid;
     column-gap: 10px;
     row-gap: 5px;
@@ -15,5 +11,5 @@
 .w-grid-item {
     width: 100%;
     height: 100%;
-    border: 2px solid pink;
+    background-color: brown;
 }
