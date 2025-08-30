@@ -24,10 +24,10 @@ function App() {
 
 
     return (
-        <>
+        <div className='main-container'>
             <TabBar />
             <WiiGridLayout />
-        </>
+        </div>
     )
 }
 

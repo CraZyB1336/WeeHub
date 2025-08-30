@@ -9,7 +9,7 @@ function IMGItemBox({ imgurl, gifurl }: { imgurl: string, gifurl:string }) {
             <img
                 onMouseEnter={()=>setIsShown(true)}
                 onMouseLeave={()=>setIsShown(false)}
-                className="itemimg"
+                className="itemimg w-grid-item"
                 src={isShown ? gifurl : imgurl}
                 alt="Item image"
             />
