@@ -4,7 +4,7 @@ import './App.css';
 import { Greet } from "../wailsjs/go/main/App";
 import Home from './pages/Home'
 import TabBar from './components/TabBar';
-import cursor from './assets/cursor.cur'
+import cursor from './assets/olololooo-fish-mouth.gif'
 
 function App() {
 
