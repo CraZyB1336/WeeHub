@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Greet } from "../../wailsjs/go/main/App";
-import Grid from "../components/Grid";
-import Item from "../components/item";
 
 function Home() {
 
@@ -14,30 +12,10 @@ function Home() {
         Greet(name).then(updateResultText);
     }
 
-    // Create array of 8 placeholder items
-    const placeholderItems = Array.from({ length: 20 }, (_, index) => ({
-        id: index + 1,
-        title: `Item ${index + 1}`,
-        description: `Placeholder description for item ${index + 1}`
-    }));
 
     return (
-        <div style={{
-            padding: '10%',
-            minHeight: '100vh',
-            boxSizing: 'border-box'
-        }}>
-            <Grid
-                gap="40px"
-                style={{
-                    maxWidth: '100%',
-                    width: '100%'
-                }}
-            >
-                {placeholderItems.map((item) => (
-                    <Item key={item.id} />
-                ))}
-            </Grid>
+        <div>
+            aaaaa
         </div>
     )
 }
