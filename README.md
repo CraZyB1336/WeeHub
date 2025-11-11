@@ -4,13 +4,16 @@ $ git clone https://github.com/Microsoft/vcpkg.git # To any directory (recommend
 $ cd vcpkg
 $ ./bootstrap-vcpkg.sh
 ```
+Also add vcpkg directory to path
 
+# Install libraries
 ```sh
-$ mkdir build
+$ vcpkg install # Make sure you have core dependencies
+```
 
-$ cmake ..
 
-$ cmake --build .
-
-$ ./weehub
+# Build and Run
+```sh
+$ cmake --build build
+$ ./build/WeeHub
 ```
