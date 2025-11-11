@@ -40,18 +40,29 @@ int main() {
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glslVersion);
 
+    ImGuiWindowFlags windowFlags = 0;
+    windowFlags |= ImGuiWindowFlags_NoTitleBar;
+    windowFlags |= ImGuiWindowFlags_NoResize;
+    windowFlags |= ImGuiWindowFlags_NoMove;
+    windowFlags |= ImGuiWindowFlags_NoCollapse;
+
     while (!glfwWindowShouldClose(window))
     {
+        int windowWidth, windowHeight;
+        glfwGetWindowSize(window, &windowWidth, &windowHeight);
+
         glfwPollEvents();
 
         // Start the ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+        ImGui::SetNextWindowPos(ImVec2(0, 0));
+        ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
 
         // Window
         {
-            ImGui::Begin("Hello, ImGui!");
+            ImGui::Begin("Hello, ImGui!", nullptr, windowFlags);
             ImGui::Text("Welcome to Dear ImGui!");
             ImGui::Text("This is a basic example window.");
             ImGui::Spacing();
@@ -63,13 +74,11 @@ int main() {
                 fmt::print("Button was clicked!\n");
             }
 
-            ImGui::Checkbox("Show Demo Window", &showDemo);
-
             ImGui::End();
         }
 
-        if (showDemo)
-            ImGui::ShowDemoWindow(&showDemo);
+        // if (showDemo)
+        //     ImGui::ShowDemoWindow(&showDemo);
 
         ImGui::Render();
         int display_w, display_h;
