@@ -4,7 +4,8 @@ project(WeeHub)
 
 set(SOURCES
     src/main.cpp
-    # Add more later
+    src/*.cpp
+    src/*.hpp
 )
 
 find_package(fmt CONFIG REQUIRED)

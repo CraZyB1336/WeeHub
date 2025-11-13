@@ -77,9 +77,6 @@ int main() {
             ImGui::End();
         }
 
-        // if (showDemo)
-        //     ImGui::ShowDemoWindow(&showDemo);
-
         ImGui::Render();
         int display_w, display_h;
         glfwGetFramebufferSize(window, &display_w, &display_h);

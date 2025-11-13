@@ -8,7 +8,7 @@ Also add vcpkg directory to path
 
 # Install libraries
 ```sh
-$ vcpkg install # Make sure you have core dependencies
+$ cmake --preset=default
 ```
 
 
