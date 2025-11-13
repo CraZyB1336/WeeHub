@@ -2,7 +2,7 @@
 #include <fmt/core.h>
 #include <fmt/color.h>
 
-WeeHub::Frame::Frame(const char *frameName)
+Frame::Frame(const char *frameName)
 {
     name = new char[strlen(frameName) + 1];
     strcpy(name, frameName);
@@ -10,12 +10,12 @@ WeeHub::Frame::Frame(const char *frameName)
     fmt::print("Initialized frame '%s'\n", name);
 }
 
-void WeeHub::Frame::setContext(WeeHub::Context *newContext)
+void Frame::setContext(WeeHub::Context *newContext)
 {
     this->context = newContext;
 }
 
-WeeHub::Frame::~Frame()
+Frame::~Frame()
 {
     delete[] name;
 }

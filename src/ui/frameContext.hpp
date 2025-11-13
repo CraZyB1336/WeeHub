@@ -11,20 +11,24 @@ namespace WeeHub
         private:
             // Singleton properties
             static Context *pinstance;
-            static std::mutex mutex;
-
-            WeeHub::Frame *currentFrame;
+            static std::mutex mtx;
         
         protected:
-            Context(const std::string);
-        
+            Context() {}
+            ~Context() {}
+            Frame *currentFrame;
+            
         public:
-            Context(WeeHub::Frame *initialFrame);
-            void TransitionTo(WeeHub::Frame *newFrame);
+            Context(Context &other) = delete;
+            void operator=(const Context &) = delete;
+
+            static Context *GetInstance();
+
+            void TransitionTo(Frame *newFrame);
             void constructFrame();
             void renderFrame();
             ~Context();
     };
-}
+} 
 
 #endif

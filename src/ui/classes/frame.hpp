@@ -5,27 +5,26 @@
 #include <imgui_impl_opengl3_loader.h>
 #include <frameContext.hpp>
 
-namespace WeeHub
-{
-    // Abstract class for frame. Declare 
-    class Frame {
-        private:
-            char *name;
+using namespace WeeHub;
+// Abstract class for frame. Declare 
+class Frame {
+    private:
+        char *name;
 
-        protected:
-            WeeHub::Context *context;
+    protected:
+        Context *context;
 
-        public:
-            Frame(const char *frameName);
+    public:
+        Frame(const char *frameName);
 
-            void setContext(WeeHub::Context *newContext);
+        void setContext(Context *newContext);
 
-            virtual void constructFrame() = 0;
-            virtual void renderFrame() = 0;
+        // Virtual methods to construct frame and render frame
+        virtual void constructFrame() = 0;
+        virtual void renderFrame() = 0;
 
-
-            virtual ~Frame();
-    };
-}
+        // Derived class should define their own destructor
+        virtual ~Frame();
+};
 
 #endif

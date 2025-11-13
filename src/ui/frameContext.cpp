@@ -1,11 +1,7 @@
 #include <frameContext.hpp>
 #include <classes/frame.hpp>
 
-WeeHub::Context::Context(WeeHub::Frame *initialFrame) {
-    this->TransitionTo(initialFrame);
-};
-
-void WeeHub::Context::TransitionTo(WeeHub::Frame *newFrame) {
+void WeeHub::Context::TransitionTo(Frame *newFrame) {
     if (this->currentFrame != nullptr)
         delete this->currentFrame;
     this->currentFrame = newFrame;
@@ -25,4 +21,17 @@ void WeeHub::Context::renderFrame()
 WeeHub::Context::~Context()
 {
     delete currentFrame;
+}
+
+WeeHub::Context *pinstance = nullptr;
+std::mutex WeeHub::Context::mtx;
+
+// Singleton instance.
+WeeHub::Context *WeeHub::Context::GetInstance() {
+    std::lock_guard<std::mutex> lock(mtx);
+    if (pinstance == nullptr)
+    {
+        pinstance = new Context();
+    }
+    return pinstance;
 }
