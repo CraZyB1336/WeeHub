@@ -3,9 +3,10 @@ cmake_minimum_required(VERSION 3.15)
 project(WeeHub)
 
 set(SOURCES
-    src/main.cpp
-    src/*.cpp
-    src/*.hpp
+    "src/main.cpp"
+    "src/ui/frameContext.cpp"
+    "src/ui/classes/frame.cpp"
+    "src/ui/frames/testFrame.cpp"
 )
 
 find_package(fmt CONFIG REQUIRED)

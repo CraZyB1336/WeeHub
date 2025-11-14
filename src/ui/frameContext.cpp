@@ -1,33 +1,40 @@
-#include <frameContext.hpp>
-#include <classes/frame.hpp>
+#include "frameContext.hpp"
 
-void WeeHub::Context::TransitionTo(Frame *newFrame) {
+void Context::TransitionTo(Frame *newFrame) {
     if (this->currentFrame != nullptr)
         delete this->currentFrame;
     this->currentFrame = newFrame;
     this->currentFrame->setContext(this);
 }
 
-void WeeHub::Context::constructFrame()
+void Context::constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags)
 {
-    this->currentFrame->constructFrame();
+    // Setup the frame in the context
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
+
+    // Generate the actual window
+    this->currentFrame->constructFrame(windowFlags);
 }
 
-void WeeHub::Context::renderFrame()
+void Context::renderFrame()
 {
     this->currentFrame->renderFrame();
 }
 
-WeeHub::Context::~Context()
+Context::~Context()
 {
     delete currentFrame;
 }
 
-WeeHub::Context *pinstance = nullptr;
-std::mutex WeeHub::Context::mtx;
+Context *Context::pinstance = nullptr;
+std::mutex Context::mtx;
 
 // Singleton instance.
-WeeHub::Context *WeeHub::Context::GetInstance() {
+Context *Context::GetInstance() {
     std::lock_guard<std::mutex> lock(mtx);
     if (pinstance == nullptr)
     {

@@ -6,6 +6,9 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+#include "ui/frameContext.hpp"
+#include "ui/frames/testFrame.hpp"
+
 ImVec4 clear_color = ImVec4(0.45f, 0.23f, 0.86f, 1.0f);
 bool showDemo = true;
 
@@ -46,6 +49,12 @@ int main() {
     windowFlags |= ImGuiWindowFlags_NoMove;
     windowFlags |= ImGuiWindowFlags_NoCollapse;
 
+    // Initialize Context singleton
+    Context *frameContext = Context::GetInstance();
+    Frame *testFrame = new TestFrame("Yomama Test", "additional");
+
+    frameContext->TransitionTo(testFrame);
+
     while (!glfwWindowShouldClose(window))
     {
         int windowWidth, windowHeight;
@@ -53,31 +62,10 @@ int main() {
 
         glfwPollEvents();
 
-        // Start the ImGui frame
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
-        ImGui::SetNextWindowPos(ImVec2(0, 0));
-        ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
+        frameContext->constructFrame(windowWidth, windowHeight, windowFlags);
+        frameContext->renderFrame();
 
-        // Window
-        {
-            ImGui::Begin("Hello, ImGui!", nullptr, windowFlags);
-            ImGui::Text("Welcome to Dear ImGui!");
-            ImGui::Text("This is a basic example window.");
-            ImGui::Spacing();
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-            ImGui::Spacing();
-            if (ImGui::Button("Click me!"))
-            {
-                fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
-                fmt::print("Button was clicked!\n");
-            }
-
-            ImGui::End();
-        }
-
-        ImGui::Render();
+        // Cleanup frame
         int display_w, display_h;
         glfwGetFramebufferSize(window, &display_w, &display_h);
         glViewport(0, 0, display_w, display_h);

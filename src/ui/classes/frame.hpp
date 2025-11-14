@@ -3,9 +3,10 @@
 
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_opengl3_loader.h>
-#include <frameContext.hpp>
 
-using namespace WeeHub;
+class Context;
+
+// using namespace WeeHub;
 // Abstract class for frame. Declare 
 class Frame {
     private:
@@ -20,7 +21,7 @@ class Frame {
         void setContext(Context *newContext);
 
         // Virtual methods to construct frame and render frame
-        virtual void constructFrame() = 0;
+        virtual void constructFrame(ImGuiWindowFlags &windowFlags) = 0;
         virtual void renderFrame() = 0;
 
         // Derived class should define their own destructor

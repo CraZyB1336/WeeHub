@@ -1,4 +1,5 @@
-#include <frame.hpp>
+#include "frame.hpp"
+#include "../frameContext.hpp"
 #include <fmt/core.h>
 #include <fmt/color.h>
 
@@ -10,7 +11,7 @@ Frame::Frame(const char *frameName)
     fmt::print("Initialized frame '%s'\n", name);
 }
 
-void Frame::setContext(WeeHub::Context *newContext)
+void Frame::setContext(Context *newContext)
 {
     this->context = newContext;
 }
