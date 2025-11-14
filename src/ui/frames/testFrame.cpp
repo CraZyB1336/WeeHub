@@ -1,4 +1,6 @@
 #include "testFrame.hpp"
+#include "../frameContext.hpp"
+#include "testFrame2.hpp"
 #include <fmt/core.h>
 #include <fmt/color.h>
 #include <iostream>
@@ -19,10 +21,10 @@ void TestFrame::constructFrame(ImGuiWindowFlags &windowFlags) {
     ImGui::Text("Welcome to Dear ImGui!");
     ImGui::Text("This is a basic example window.");
     ImGui::Spacing();
-    if (ImGui::Button("Click me!"))
+    if (ImGui::Button("Click me to transition!"))
     {
-        fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
-        fmt::print("Button was clicked!\n");
+        Context* context = Context::GetInstance();
+        context->TransitionTo(new TestFrame2("Yodada", "yodad2"));
     }
 
     ImGui::End();

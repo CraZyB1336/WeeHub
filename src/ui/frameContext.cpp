@@ -4,7 +4,6 @@ void Context::TransitionTo(Frame *newFrame) {
     if (this->currentFrame != nullptr)
         delete this->currentFrame;
     this->currentFrame = newFrame;
-    this->currentFrame->setContext(this);
 }
 
 void Context::constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags)

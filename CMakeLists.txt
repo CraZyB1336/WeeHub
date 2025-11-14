@@ -7,6 +7,7 @@ set(SOURCES
     "src/ui/frameContext.cpp"
     "src/ui/classes/frame.cpp"
     "src/ui/frames/testFrame.cpp"
+    "src/ui/frames/testFrame2.cpp"
 )
 
 find_package(fmt CONFIG REQUIRED)
