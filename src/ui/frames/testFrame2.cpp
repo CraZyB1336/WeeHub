@@ -36,7 +36,8 @@ void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) 
     }
 
     ImGui::Image(imgData->imageID, ImVec2(imgData->width, imgData->height));
-    ImGui::Image(getCurrentGIFFrame(gifData, deltaTime), ImVec2(gifData->width, gifData->height));
+    getCurrentGIFFrame(this->gifData, deltaTime);
+    ImGui::Image(gifData->currentFrameID, ImVec2(gifData->width, gifData->height));
     ImGui::End();
 }
 

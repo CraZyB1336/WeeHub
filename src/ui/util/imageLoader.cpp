@@ -25,6 +25,9 @@ namespace WeeHub
         imgData->width = imageWidth;
         imgData->height = imageHeight;
 
+        // Unbind
+        glBindTexture(GL_TEXTURE_2D, 0);
+
         return imgData;
     }
 
@@ -40,6 +43,8 @@ namespace WeeHub
             fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub]");
             fmt::print(fmt::emphasis::bold | fg(fmt::color::indian_red), "[Error] ");
             fmt::print("Could not find GIF / GIF location");
+            delete gifData;
+            return nullptr;
         }
 
         size_t fileSize = file.tellg();
@@ -70,6 +75,8 @@ namespace WeeHub
             fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub]");
             fmt::print(fmt::emphasis::bold | fg(fmt::color::indian_red), "[Error] ");
             fmt::print("Could not load GIF from memory");
+            delete gifData;
+            return nullptr;
         }
 
         size_t frameSize = width * height * 4;
@@ -101,18 +108,18 @@ namespace WeeHub
         return gifData;
     }
 
-    GLuint getCurrentGIFFrame(GIFData* gifData, float deltaTime)
+    void getCurrentGIFFrame(GIFData* gifData, float deltaTime)
     {
-        int currentFrameDelay = gifData->delays[gifData->current_frame];
+        int currentFrameDelay = gifData->delays[gifData->currentFrame];
         gifData->timer += deltaTime * 1000.0f;
 
         // Check for transition of frame
         if (gifData->timer >= currentFrameDelay)
         {
             gifData->timer = 0;
-            gifData->current_frame = (gifData->current_frame + 1) % gifData->frameAmount;
+            gifData->currentFrame = (gifData->currentFrame + 1) % gifData->frameAmount;
         }
 
-        return gifData->current_frame;
+        gifData->currentFrameID = gifData->frames[gifData->currentFrame];
     }
 }

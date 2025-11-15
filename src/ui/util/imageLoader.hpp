@@ -22,7 +22,8 @@ namespace WeeHub
         std::vector<int> delays;
         int frameAmount;
         int width, height;
-        int current_frame = 0;
+        int currentFrame = 0;
+        GLuint currentFrameID = 0;
         float timer = 0.0;
     };
 
@@ -39,5 +40,5 @@ namespace WeeHub
     /**
      * Adds the delta time to a gif and transitions to the next frame
      */
-    GLuint getCurrentGIFFrame(GIFData* gifData, float deltaTime);
+    void getCurrentGIFFrame(GIFData* gifData, float deltaTime);
 }
