@@ -28,6 +28,9 @@ namespace WeeHub
         // Unbind
         glBindTexture(GL_TEXTURE_2D, 0);
 
+        fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
+        fmt::print("Successfully initialized image {}\n", fileName);
+
         return imgData;
     }
 
@@ -104,6 +107,9 @@ namespace WeeHub
 
         stbi_image_free(gif_data);
         free(delays);
+
+        fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
+        fmt::print("Successfully initialized gif {}\n", fileName);
 
         return gifData;
     }
