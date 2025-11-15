@@ -35,4 +35,9 @@ namespace WeeHub
      * Returns a pointer to an gifTextures along with other data.
      */
     GIFData* loadGIFFromPath(const char* fileName);
+
+    /**
+     * Adds the delta time to a gif and transitions to the next frame
+     */
+    GLuint getCurrentGIFFrame(GIFData* gifData, float deltaTime);
 }

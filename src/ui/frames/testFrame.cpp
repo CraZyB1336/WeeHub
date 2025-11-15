@@ -16,7 +16,7 @@ TestFrame::~TestFrame() {
     delete[] newString;
 }
 
-void TestFrame::constructFrame(ImGuiWindowFlags &windowFlags) {
+void TestFrame::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) {
     // Window
     ImGui::Begin("Hello, ImGui!", nullptr, windowFlags);
     ImGui::Text("Welcome to Dear ImGui!");

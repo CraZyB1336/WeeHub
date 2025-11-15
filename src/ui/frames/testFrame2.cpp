@@ -23,7 +23,7 @@ TestFrame2::~TestFrame2() {
         delete gifData;
 }
 
-void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags) {
+void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) {
     // Window
     ImGui::Begin("Hello, im not Gui!", nullptr, windowFlags);
     ImGui::Text("Welcome to Dear not ImGui!");
@@ -36,7 +36,7 @@ void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags) {
     }
 
     ImGui::Image(imgData->imageID, ImVec2(imgData->width, imgData->height));
-    ImGui::Image(gifData->frames[0], ImVec2(gifData->width, gifData->height));
+    ImGui::Image(getCurrentGIFFrame(gifData, deltaTime), ImVec2(gifData->width, gifData->height));
     ImGui::End();
 }
 

@@ -28,7 +28,7 @@ namespace WeeHub {
             static Context *GetInstance();
 
             void TransitionTo(Frame *newFrame);
-            void constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags);
+            void constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags, float deltaTime);
             void renderFrame();
             ~Context();
     };

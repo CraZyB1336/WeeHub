@@ -14,7 +14,7 @@ namespace WeeHub
         Frame(const char *frameName);
 
         // Virtual methods to construct frame and render frame
-        virtual void constructFrame(ImGuiWindowFlags &windowFlags) = 0;
+        virtual void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) = 0;
         virtual void renderFrame() = 0;
 
         // Derived class should define their own destructor

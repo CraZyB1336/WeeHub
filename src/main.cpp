@@ -63,7 +63,7 @@ int main() {
 
         glfwPollEvents();
 
-        frameContext->constructFrame(windowWidth, windowHeight, windowFlags);
+        frameContext->constructFrame(windowWidth, windowHeight, windowFlags, io.DeltaTime);
         frameContext->renderFrame();
 
         // Cleanup frame

@@ -10,7 +10,7 @@ namespace WeeHub
         char *newString;
         TestFrame(const char *frameName, const char *additionalParameter);
 
-        void constructFrame(ImGuiWindowFlags &windowFlags) override;
+        void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) override;
         void renderFrame() override;
 
         ~TestFrame();

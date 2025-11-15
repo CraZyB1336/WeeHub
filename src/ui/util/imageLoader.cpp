@@ -90,6 +90,7 @@ namespace WeeHub
 
         gifData->width = width;
         gifData->height = height;
+        gifData->frameAmount = numberOfFrames;
 
         // Unbind
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -98,5 +99,20 @@ namespace WeeHub
         free(delays);
 
         return gifData;
+    }
+
+    GLuint getCurrentGIFFrame(GIFData* gifData, float deltaTime)
+    {
+        int currentFrameDelay = gifData->delays[gifData->current_frame];
+        gifData->timer += deltaTime * 1000.0f;
+
+        // Check for transition of frame
+        if (gifData->timer >= currentFrameDelay)
+        {
+            gifData->timer = 0;
+            gifData->current_frame = (gifData->current_frame + 1) % gifData->frameAmount;
+        }
+
+        return gifData->current_frame;
     }
 }

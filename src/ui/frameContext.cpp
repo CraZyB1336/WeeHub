@@ -7,7 +7,7 @@ void Context::TransitionTo(Frame *newFrame) {
     this->currentFrame = newFrame;
 }
 
-void Context::constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags)
+void Context::constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags, float deltaTime)
 {
     // Setup the frame in the context
     ImGui_ImplOpenGL3_NewFrame();
@@ -17,7 +17,7 @@ void Context::constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFla
     ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
 
     // Generate the actual window
-    this->currentFrame->constructFrame(windowFlags);
+    this->currentFrame->constructFrame(windowFlags, deltaTime);
 }
 
 void Context::renderFrame()
