@@ -50,8 +50,9 @@ int main() {
     windowFlags |= ImGuiWindowFlags_NoCollapse;
 
     // Initialize Context singleton
-    Context *frameContext = Context::GetInstance();
-    Frame *testFrame = new TestFrame("Yomama Test", "additional");
+    WeeHub::Context *frameContext = WeeHub::Context::GetInstance();
+
+    WeeHub::Frame *testFrame = new WeeHub::TestFrame("Yomama Test", "additional");
 
     frameContext->TransitionTo(testFrame);
 

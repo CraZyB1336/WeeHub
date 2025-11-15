@@ -4,9 +4,9 @@
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_opengl3_loader.h>
 
-// using namespace WeeHub;
-// Abstract class for frame. Declare 
-class Frame {
+namespace WeeHub
+{
+    class Frame {
     private:
         char *name;
 
@@ -19,6 +19,7 @@ class Frame {
 
         // Derived class should define their own destructor
         virtual ~Frame();
-};
+    };
+}
 
 #endif

@@ -1,11 +1,16 @@
-#include "../classes/frame.hpp"
+#include "../util/frame.hpp"
+#include "../util/imageLoader.hpp"
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_opengl3_loader.h>
 #include <imgui_impl_glfw.h>
 
-// using namespace WeeHub;
+namespace WeeHub
+{
+    class TestFrame2 : public Frame {
+    private:
+        ImageData* imgData = nullptr;
+        GIFData* gifData = nullptr;
 
-class TestFrame2 : public Frame {
     public:
         char *newString;
         TestFrame2(const char *frameName, const char *additionalParameter);
@@ -14,4 +19,5 @@ class TestFrame2 : public Frame {
         void renderFrame() override;
 
         ~TestFrame2();
-};
+    };
+}

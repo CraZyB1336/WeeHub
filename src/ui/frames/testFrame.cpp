@@ -1,10 +1,11 @@
 #include "testFrame.hpp"
-#include "../frameContext.hpp"
 #include "testFrame2.hpp"
+#include "../frameContext.hpp"
 #include <fmt/core.h>
 #include <fmt/color.h>
 #include <iostream>
 
+using namespace WeeHub;
 TestFrame::TestFrame(const char *frameName, const char *additionalParameter) : Frame(frameName) {
     newString = new char[strlen(additionalParameter) + 1];
     strcpy(newString, additionalParameter);

@@ -1,5 +1,6 @@
 #include "frameContext.hpp"
 
+using namespace WeeHub;
 void Context::TransitionTo(Frame *newFrame) {
     if (this->currentFrame != nullptr)
         delete this->currentFrame;

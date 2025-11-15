@@ -3,14 +3,24 @@
 #include <fmt/color.h>
 #include <iostream>
 
+using namespace WeeHub;
+
 TestFrame2::TestFrame2(const char *frameName, const char *additionalParameter) : Frame(frameName) {
     newString = new char[strlen(additionalParameter) + 1];
     strcpy(newString, additionalParameter);
+    imgData = loadImageFromPath("resources/images/hasmter.jpg");
+    gifData = loadGIFFromPath("resources/images/chinacat.gif");
 }
 
 // Base destructor should be called here
 TestFrame2::~TestFrame2() {
     delete[] newString;
+
+    if (imgData != nullptr)
+        delete imgData;
+
+    if (gifData != nullptr)
+        delete gifData;
 }
 
 void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags) {
@@ -25,6 +35,8 @@ void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags) {
         fmt::print("Button was clicked!\n");
     }
 
+    ImGui::Image(imgData->imageID, ImVec2(imgData->width, imgData->height));
+    ImGui::Image(gifData->frames[0], ImVec2(gifData->width, gifData->height));
     ImGui::End();
 }
 
