@@ -6,18 +6,19 @@
 
 namespace WeeHub
 {
-    class TestFrame2 : public Frame {
-    private:
-        ImageData* imgData = nullptr;
-        GIFData* gifData = nullptr;
+    class TestFrame2 : public Frame 
+    {
+        private:
+            ImageData* imgData = nullptr;
+            GIFData* gifData = nullptr;
 
-    public:
-        char *newString;
-        TestFrame2(const char *frameName, const char *additionalParameter);
+        public:
+            char *newString;
+            TestFrame2(const char *frameName, const char *additionalParameter);
 
-        void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) override;
-        void renderFrame() override;
+            void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) override;
+            void renderFrame() override;
 
-        ~TestFrame2();
+            ~TestFrame2();
     };
 }

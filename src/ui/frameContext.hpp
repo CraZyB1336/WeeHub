@@ -9,12 +9,15 @@
 #include <imgui_impl_glfw.h>
 
 
-namespace WeeHub {
-    class Context {
+namespace WeeHub 
+{
+    class Context 
+    {
         private:
             // Singleton properties
             static Context *pinstance;
             static std::mutex mtx;
+            float scale = 1.0f;
         
         protected:
             // Protected constructors for Singleton
@@ -27,8 +30,10 @@ namespace WeeHub {
 
             static Context *GetInstance();
 
+            void setScale(float scale);
+            float getScale();
             void TransitionTo(Frame *newFrame);
-            void constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags, float deltaTime);
+            void constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags, float deltaTime, float scale);
             void renderFrame();
             ~Context();
     };

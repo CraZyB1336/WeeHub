@@ -7,7 +7,7 @@ void Context::TransitionTo(Frame *newFrame) {
     this->currentFrame = newFrame;
 }
 
-void Context::constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags, float deltaTime)
+void Context::constructFrame(int &windowWidth, int &windowHeight, ImGuiWindowFlags &windowFlags, float deltaTime, float scale)
 {
     // Setup the frame in the context
     ImGui_ImplOpenGL3_NewFrame();
@@ -42,3 +42,6 @@ Context *Context::GetInstance() {
     }
     return pinstance;
 }
+
+void Context::setScale(float scale) { this->scale = scale; }
+float Context::getScale() { return this->scale; }

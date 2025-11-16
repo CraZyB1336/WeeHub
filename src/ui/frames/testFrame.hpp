@@ -5,14 +5,15 @@
 
 namespace WeeHub
 {
-    class TestFrame : public Frame {
-    public:
-        char *newString;
-        TestFrame(const char *frameName, const char *additionalParameter);
+    class TestFrame : public Frame 
+    {
+        public:
+            char *newString;
+            TestFrame(const char *frameName, const char *additionalParameter);
 
-        void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) override;
-        void renderFrame() override;
+            void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) override;
+            void renderFrame() override;
 
-        ~TestFrame();
+            ~TestFrame();
     };
 }

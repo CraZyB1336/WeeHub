@@ -2,6 +2,7 @@
 #include <fmt/core.h>
 #include <fmt/color.h>
 #include <iostream>
+#include "../frameContext.hpp"
 
 using namespace WeeHub;
 
@@ -24,6 +25,9 @@ TestFrame2::~TestFrame2() {
 }
 
 void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) {
+    Context* context = Context::GetInstance();
+    float scale = context->getScale();
+
     // Window
     ImGui::Begin("Hello, im not Gui!", nullptr, windowFlags);
     ImGui::Text("Welcome to Dear not ImGui!");
@@ -35,9 +39,9 @@ void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) 
         fmt::print("Button was clicked!\n");
     }
 
-    ImGui::Image(imgData->imageID, ImVec2(imgData->width, imgData->height));
+    ImGui::Image(imgData->imageID, ImVec2(imgData->width * scale, imgData->height * scale));
     getCurrentGIFFrame(this->gifData, deltaTime);
-    ImGui::Image(gifData->currentFrameID, ImVec2(gifData->width, gifData->height));
+    ImGui::Image(gifData->currentFrameID, ImVec2(gifData->width * scale, gifData->height * scale));
     ImGui::End();
 }
 

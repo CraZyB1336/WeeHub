@@ -6,19 +6,20 @@
 
 namespace WeeHub
 {
-    class Frame {
-    private:
-        char *name;
+    class Frame 
+    {
+        private:
+            char *name;
 
-    public:
-        Frame(const char *frameName);
+        public:
+            Frame(const char *frameName);
 
-        // Virtual methods to construct frame and render frame
-        virtual void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) = 0;
-        virtual void renderFrame() = 0;
+            // Virtual methods to construct frame and render frame
+            virtual void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) = 0;
+            virtual void renderFrame() = 0;
 
-        // Derived class should define their own destructor
-        virtual ~Frame();
+            // Derived class should define their own destructor
+            virtual ~Frame();
     };
 }
 

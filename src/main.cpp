@@ -10,7 +10,14 @@
 #include "ui/frames/testFrame.hpp"
 
 ImVec4 clear_color = ImVec4(0.45f, 0.23f, 0.86f, 1.0f);
-bool showDemo = true;
+
+// Boolean for setting exclusive fullscreen or borderless window fullscreen
+bool borderless = true;
+
+const float REF_WIDTH = 1920.0f;
+const float REF_HEIGHT = 1080.0f;
+
+const float fontSize = 25.0f;
 
 int main() {
     fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
@@ -20,7 +27,17 @@ int main() {
     if (!glfwInit())
         return -1;
 
-    GLFWwindow *window = glfwCreateWindow(1280, 720, "ImGui Basic", NULL, NULL);
+    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+    if (borderless)
+    {
+        glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+        glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+        glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+        glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+    }
+
+    GLFWwindow *window = glfwCreateWindow(mode->width, mode->height, "ImGui Basic", monitor, NULL);
     if (window == NULL)
         return -1;
 
@@ -36,12 +53,6 @@ int main() {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO &io = ImGui::GetIO();
-    io.FontGlobalScale = 2.5f;
-
-    // Dark color theme
-    ImGui::StyleColorsDark();
-    ImGui_ImplGlfw_InitForOpenGL(window, true);
-    ImGui_ImplOpenGL3_Init(glslVersion);
 
     ImGuiWindowFlags windowFlags = 0;
     windowFlags |= ImGuiWindowFlags_NoTitleBar;
@@ -49,9 +60,13 @@ int main() {
     windowFlags |= ImGuiWindowFlags_NoMove;
     windowFlags |= ImGuiWindowFlags_NoCollapse;
 
-    // Initialize Context singleton
-    WeeHub::Context *frameContext = WeeHub::Context::GetInstance();
+    // Dark color theme
+    ImGui::StyleColorsDark();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(glslVersion);
 
+    // Initialize Context singleton and first frame
+    WeeHub::Context *frameContext = WeeHub::Context::GetInstance();
     WeeHub::Frame *testFrame = new WeeHub::TestFrame("Yomama Test", "additional");
 
     frameContext->TransitionTo(testFrame);
@@ -60,10 +75,14 @@ int main() {
     {
         int windowWidth, windowHeight;
         glfwGetWindowSize(window, &windowWidth, &windowHeight);
+        float scale = std::min(windowWidth / REF_WIDTH, windowHeight / REF_HEIGHT);
+        io.FontGlobalScale = 2.5 * scale;
+
+        frameContext->setScale(scale);
 
         glfwPollEvents();
 
-        frameContext->constructFrame(windowWidth, windowHeight, windowFlags, io.DeltaTime);
+        frameContext->constructFrame(windowWidth, windowHeight, windowFlags, io.DeltaTime, scale);
         frameContext->renderFrame();
 
         // Cleanup frame
