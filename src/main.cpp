@@ -21,6 +21,8 @@ const float fontSize = 25.0f;
 WeeHub::Context *frameContext = WeeHub::Context::GetInstance();
 WeeHub::InputManager *inputManager = WeeHub::InputManager::GetInstance();
 
+bool windowed = true;
+
 int main() {
     fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
     fmt::print("Booting WeeHub\n");
@@ -36,7 +38,13 @@ int main() {
     glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
     glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
-    GLFWwindow *window = glfwCreateWindow(mode->width, mode->height, "ImGui Basic", monitor, NULL);
+    GLFWwindow *window;
+
+    if (windowed)
+        window = glfwCreateWindow(REF_WIDTH / 2, REF_WIDTH / 2, "ImGui Basic", NULL, NULL);
+    else
+        window = glfwCreateWindow(mode->width, mode->height, "ImGui Basic", monitor, NULL);
+    
     if (window == NULL)
         return -1;
 

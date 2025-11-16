@@ -41,10 +41,22 @@ void InputManager::DetachMouseSubscriber(MouseInputSubscriber *callback)
 
 void InputManager::CallKeySubscribers(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-    GLFW_KEY_A;
-
     for (KeyInputSubscriber *subscriber : keyInputSubscriber)
     {
-        subscriber->callback(key);
+
+        switch (action)
+        {
+            case GLFW_PRESS:
+                if (subscriber->options & KEY_PRESSED)
+                    subscriber->callback(window, key);
+                break;
+            
+            case GLFW_RELEASE:
+                if (subscriber->options & KEY_RELEASED)
+                    subscriber->callback(window, key);
+
+            default:
+                break;
+        }
     }
 }

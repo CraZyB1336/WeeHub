@@ -17,7 +17,7 @@ namespace WeeHub
 
     struct KeyInputSubscriber
     {
-        std::function<void(int)> callback;
+        std::function<void(GLFWwindow*, int)> callback;
         uint8_t options;
     };
 
@@ -37,7 +37,7 @@ namespace WeeHub
 
     struct MouseInputSubscriber
     {
-        std::function<void()> callback;
+        std::function<void(GLFWwindow*)> callback;
         uint8_t options;
     };
 

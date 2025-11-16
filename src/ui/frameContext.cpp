@@ -1,18 +1,26 @@
 #include "frameContext.hpp"
 #include <fmt/core.h>
+#include <fmt/color.h>
 
 using namespace WeeHub;
 Context::Context()
 {
+    inputManager = InputManager::GetInstance();
     currentFrame = nullptr;
-    exitInput = new KeyInputSubscriber;
-    exitInput->callback = [this](int key) {
-        fmt::print("Yoyoyo it worked");
-    };
-    exitInput->options = KEY_PRESSED;
 
-    InputManager *inputManager = InputManager::GetInstance();
+    // Setting global keyboard handlers
+    exitInput = new KeyInputSubscriber;
+    exitInput->callback = [this](GLFWwindow *window, int key) {
+        if (key == GLFW_KEY_Q)
+        {
+            fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
+            fmt::print("Closing WeeHub. Goodbye!\n");
+            glfwSetWindowShouldClose(window, GL_TRUE);
+        }
+    };
+
     inputManager->AttachKeySubscriber(exitInput);
+    exitInput->options = KEY_RELEASED;
 }
 
 void Context::TransitionTo(Frame *newFrame) {

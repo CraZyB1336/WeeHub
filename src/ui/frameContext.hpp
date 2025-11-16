@@ -21,7 +21,9 @@ namespace WeeHub
             static std::mutex mtx;
             float scale = 1.0f;
 
-            KeyInputSubscriber* exitInput;
+            // Input handling GLOBAL
+            InputManager *inputManager;
+            KeyInputSubscriber *exitInput;
 
         protected:
             // Protected constructors for Singleton
