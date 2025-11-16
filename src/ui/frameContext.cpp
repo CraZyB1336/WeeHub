@@ -1,6 +1,20 @@
 #include "frameContext.hpp"
+#include <fmt/core.h>
 
 using namespace WeeHub;
+Context::Context()
+{
+    currentFrame = nullptr;
+    exitInput = new KeyInputSubscriber;
+    exitInput->callback = [this](int key) {
+        fmt::print("Yoyoyo it worked");
+    };
+    exitInput->options = KEY_PRESSED;
+
+    InputManager *inputManager = InputManager::GetInstance();
+    inputManager->AttachKeySubscriber(exitInput);
+}
+
 void Context::TransitionTo(Frame *newFrame) {
     if (this->currentFrame != nullptr)
         delete this->currentFrame;

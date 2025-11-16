@@ -34,7 +34,7 @@ namespace WeeHub
         return imgData;
     }
 
-    GIFData* loadGIFFromPath(const char* fileName)
+    GIFData *loadGIFFromPath(const char *fileName)
     {
         GIFData* gifData = new GIFData;
         int error; 
@@ -114,7 +114,7 @@ namespace WeeHub
         return gifData;
     }
 
-    void getCurrentGIFFrame(GIFData* gifData, float deltaTime)
+    void getCurrentGIFFrame(GIFData *gifData, float deltaTime)
     {
         int currentFrameDelay = gifData->delays[gifData->currentFrame];
         gifData->timer += deltaTime * 1000.0f;

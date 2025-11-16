@@ -1,7 +1,9 @@
 #ifndef WEEHUB_CONTEXT
 #define WEEHUB_CONTEXT
+#pragma once
 
 #include "util/frame.hpp"
+#include "util/inputManager.hpp"
 #include <mutex>
 #include <string>
 #include <imgui_impl_opengl3.h>
@@ -18,10 +20,12 @@ namespace WeeHub
             static Context *pinstance;
             static std::mutex mtx;
             float scale = 1.0f;
-        
+
+            KeyInputSubscriber* exitInput;
+
         protected:
             // Protected constructors for Singleton
-            Context() : currentFrame(nullptr) {}
+            Context();
             Frame *currentFrame;
             
         public:

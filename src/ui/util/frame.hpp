@@ -1,5 +1,6 @@
 #ifndef WEEHUB_FRAME
 #define WEEHUB_FRAME
+#pragma once
 
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_opengl3_loader.h>

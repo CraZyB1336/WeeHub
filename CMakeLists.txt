@@ -7,6 +7,7 @@ set(SOURCES
     "src/ui/frameContext.cpp"
     "src/ui/util/frame.cpp"
     "src/ui/util/imageLoader.cpp"
+    "src/ui/util/inputManager.cpp"
     "src/ui/frames/testFrame.cpp"
     "src/ui/frames/testFrame2.cpp"
 )

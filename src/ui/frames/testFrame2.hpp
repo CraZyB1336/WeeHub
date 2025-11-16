@@ -9,8 +9,8 @@ namespace WeeHub
     class TestFrame2 : public Frame 
     {
         private:
-            ImageData* imgData = nullptr;
-            GIFData* gifData = nullptr;
+            ImageData *imgData = nullptr;
+            GIFData *gifData = nullptr;
 
         public:
             char *newString;

@@ -25,7 +25,7 @@ TestFrame2::~TestFrame2() {
 }
 
 void TestFrame2::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) {
-    Context* context = Context::GetInstance();
+    Context *context = Context::GetInstance();
     float scale = context->getScale();
 
     // Window

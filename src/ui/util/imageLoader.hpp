@@ -1,3 +1,7 @@
+#ifndef WEEHUB_IMAGE
+#define WEEHUB_IMAGE
+#pragma once
+
 #include <GLFW/glfw3.h>
 #include <stb_image.h>
 #include <vector>
@@ -30,15 +34,17 @@ namespace WeeHub
     /**
      * Returns a pointer to an imageTexture ID along with other data.
      */
-    ImageData* loadImageFromPath(const char* fileName);
+    ImageData *loadImageFromPath(const char *fileName);
 
     /**
      * Returns a pointer to an gifTextures along with other data.
      */
-    GIFData* loadGIFFromPath(const char* fileName);
+    GIFData *loadGIFFromPath(const char *fileName);
 
     /**
      * Adds the delta time to a gif and transitions to the next frame
      */
-    void getCurrentGIFFrame(GIFData* gifData, float deltaTime);
+    void getCurrentGIFFrame(GIFData *gifData, float deltaTime);
 }
+
+#endif

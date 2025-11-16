@@ -8,16 +8,18 @@
 
 #include "ui/frameContext.hpp"
 #include "ui/frames/testFrame.hpp"
+#include "ui/util/inputManager.hpp"
 
 ImVec4 clear_color = ImVec4(0.45f, 0.23f, 0.86f, 1.0f);
-
-// Boolean for setting exclusive fullscreen or borderless window fullscreen
-bool borderless = true;
 
 const float REF_WIDTH = 1920.0f;
 const float REF_HEIGHT = 1080.0f;
 
 const float fontSize = 25.0f;
+
+// Singletons
+WeeHub::Context *frameContext = WeeHub::Context::GetInstance();
+WeeHub::InputManager *inputManager = WeeHub::InputManager::GetInstance();
 
 int main() {
     fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
@@ -27,15 +29,12 @@ int main() {
     if (!glfwInit())
         return -1;
 
-    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-    if (borderless)
-    {
-        glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-        glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-        glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-        glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-    }
+    GLFWmonitor *monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+    glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+    glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+    glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+    glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
     GLFWwindow *window = glfwCreateWindow(mode->width, mode->height, "ImGui Basic", monitor, NULL);
     if (window == NULL)
@@ -65,11 +64,15 @@ int main() {
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glslVersion);
 
-    // Initialize Context singleton and first frame
-    WeeHub::Context *frameContext = WeeHub::Context::GetInstance();
+    // Initialize first frame
     WeeHub::Frame *testFrame = new WeeHub::TestFrame("Yomama Test", "additional");
 
     frameContext->TransitionTo(testFrame);
+
+    // Input stuff
+    glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
+        inputManager->CallKeySubscribers(window, key, scancode, action, mods);
+    });
 
     while (!glfwWindowShouldClose(window))
     {
