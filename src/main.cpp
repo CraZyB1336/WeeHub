@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include "ui/frameContext.hpp"
-#include "ui/frames/testFrame.hpp"
+#include "ui/frames/bootFrame.hpp"
 #include "ui/util/inputManager.hpp"
 
 ImVec4 clear_color = ImVec4(0.45f, 0.23f, 0.86f, 1.0f);
@@ -15,13 +15,15 @@ ImVec4 clear_color = ImVec4(0.45f, 0.23f, 0.86f, 1.0f);
 const float REF_WIDTH = 1920.0f;
 const float REF_HEIGHT = 1080.0f;
 
-const float fontSize = 25.0f;
+// TODO, move to a global settings file
+const float UPSCALED_FONT = 48.0f;
+const float fontSize = 24.0f;
 
 // Singletons
 WeeHub::Context *frameContext = WeeHub::Context::GetInstance();
 WeeHub::InputManager *inputManager = WeeHub::InputManager::GetInstance();
 
-bool windowed = true;
+bool windowed = false;
 
 int main() {
     fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue), "[WeeHub] ");
@@ -61,6 +63,14 @@ int main() {
     ImGui::CreateContext();
     ImGuiIO &io = ImGui::GetIO();
 
+    // Initialize default font
+    ImFontConfig config;
+    config.OversampleH = 3;
+    config.OversampleV = 3;
+    config.SizePixels = 48.0f;
+
+    io.FontDefault = io.Fonts->AddFontDefault(&config);
+
     ImGuiWindowFlags windowFlags = 0;
     windowFlags |= ImGuiWindowFlags_NoTitleBar;
     windowFlags |= ImGuiWindowFlags_NoResize;
@@ -73,9 +83,9 @@ int main() {
     ImGui_ImplOpenGL3_Init(glslVersion);
 
     // Initialize first frame
-    WeeHub::Frame *testFrame = new WeeHub::TestFrame("Yomama Test", "additional");
+    WeeHub::Frame *bootFrame = new WeeHub::BootFrame("BootFrame");
 
-    frameContext->TransitionTo(testFrame);
+    frameContext->TransitionTo(bootFrame);
 
     // Input stuff
     glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -87,7 +97,6 @@ int main() {
         int windowWidth, windowHeight;
         glfwGetWindowSize(window, &windowWidth, &windowHeight);
         float scale = std::min(windowWidth / REF_WIDTH, windowHeight / REF_HEIGHT);
-        io.FontGlobalScale = 2.5 * scale;
 
         frameContext->setScale(scale);
 

@@ -5,19 +5,18 @@
 
 namespace WeeHub
 {
-    class TestFrame : public Frame 
+    class BootFrame : public Frame 
     {
         private:
             ImGuiIO &io = ImGui::GetIO();
             ImFont* continuumBold;
 
         public:
-            char *newString;
-            TestFrame(const char *frameName, const char *additionalParameter);
+            BootFrame(const char *frameName);
 
             void constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) override;
             void renderFrame() override;
 
-            ~TestFrame();
+            ~BootFrame();
     };
 }
