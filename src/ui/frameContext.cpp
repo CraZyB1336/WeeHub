@@ -50,6 +50,7 @@ void Context::renderFrame()
 Context::~Context()
 {
     delete currentFrame;
+    delete exitInput;
 }
 
 Context *Context::pinstance = nullptr;
