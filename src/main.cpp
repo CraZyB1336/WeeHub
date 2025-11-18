@@ -1,3 +1,4 @@
+#define NOMINMAX
 #include <fmt/core.h>
 #include <fmt/color.h>
 #include <imgui_impl_opengl3.h>
