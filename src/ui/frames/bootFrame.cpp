@@ -20,16 +20,15 @@ void BootFrame::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) {
     ImGui::SetNextWindowPos(center, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
 
     // Window
-    ImGui::Begin("Yo", nullptr, windowFlags);
-    ImGui::SetWindowFontScale((220.0f / 256.0f) * context->getScale());
+    ImGui::Begin("Title", nullptr, windowFlags);
+    ImGui::SetWindowFontScale((256.0f / 256.0f) * context->getScale());
     ImGui::PushFont(continuumBold);
-    const char *title = "WeeHub";
-    ImVec2 textSize = ImGui::CalcTextSize(title);
+    ImVec2 textSize = ImGui::CalcTextSize(this->title);
     ImVec2 windowSize = ImGui::GetWindowSize();
     ImVec2 pos = ImVec2((windowSize.x - textSize.x) * 0.5, (windowSize.y - textSize.y) * 0.5);
 
     ImGui::SetCursorPos(pos);
-    ImGui::Text("WeeHub");
+    ImGui::Text("%s", this->title);
     ImGui::PopFont();
     ImGui::End();
 }

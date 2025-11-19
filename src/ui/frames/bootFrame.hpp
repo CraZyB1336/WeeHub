@@ -10,7 +10,7 @@ namespace WeeHub
         private:
             ImGuiIO &io = ImGui::GetIO();
             ImFont* continuumBold;
-
+            const char *title = "WeeHub";
         public:
             BootFrame(const char *frameName);
 
