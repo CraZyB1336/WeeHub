@@ -7,7 +7,7 @@
 using namespace WeeHub;
 BootFrame::BootFrame(const char *frameName) : Frame(frameName) 
 {
-    continuumBold = io.Fonts->AddFontFromFileTTF("resources/fonts/contb.ttf", 128.0f);
+    continuumBold = io.Fonts->AddFontFromFileTTF("resources/fonts/contb.ttf", 256.0f);
 }
 
 // Base destructor should be called here
@@ -21,12 +21,15 @@ void BootFrame::constructFrame(ImGuiWindowFlags &windowFlags, float deltaTime) {
 
     // Window
     ImGui::Begin("Yo", nullptr, windowFlags);
-    ImGui::SetWindowFontScale((80.0f / 128.0f) * context->getScale());
+    ImGui::SetWindowFontScale((220.0f / 256.0f) * context->getScale());
     ImGui::PushFont(continuumBold);
-    ImGui::Text("WeeHub");
+    const char *title = "WeeHub";
+    ImVec2 textSize = ImGui::CalcTextSize(title);
+    ImVec2 windowSize = ImGui::GetWindowSize();
+    ImVec2 pos = ImVec2((windowSize.x - textSize.x) * 0.5, (windowSize.y - textSize.y) * 0.5);
 
-    ImGui::SetWindowFontScale((48.0f / 128.0f) * context->getScale());
-    ImGui::Text("By Christopher and David");
+    ImGui::SetCursorPos(pos);
+    ImGui::Text("WeeHub");
     ImGui::PopFont();
     ImGui::End();
 }

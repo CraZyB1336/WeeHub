@@ -8,8 +8,8 @@
             ],
             "intelliSenseMode": "linux-gcc-x64",
             "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c17",
-            "cppStandard": "gnu++17"
+            "cStandard": "c23",
+            "cppStandard": "gnu++20"
         },
         {
             "name": "Windows",
@@ -18,8 +18,8 @@
                 "${workspaceFolder}/build/vcpkg_installed/x64-windows/include"
             ],
             "intelliSenseMode": "windows-gcc-x64",
-            "cStandard": "c17",
-            "cppStandard": "gnu++17"
+            "cStandard": "c23",
+            "cppStandard": "gnu++20"
         }
 
     ],
