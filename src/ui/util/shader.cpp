@@ -1,5 +1,5 @@
 #include "shader.hpp"
-#include <glad/glad.h>
+#include <imgui_impl_opengl3_loader.h>
 
 using namespace WeeHub;
 Shader::Shader()                    { programID = glCreateProgram(); }
@@ -104,8 +104,7 @@ unsigned int create(std::string const &filename, bool filenameIsExtension)
         ext = filename.substr(idx + 1);
     }
 
-    if      (ext == "comp") return glCreateShader(GL_COMPUTE_SHADER);
-    else if (ext == "frag") return glCreateShader(GL_FRAGMENT_SHADER);
+    if (ext == "frag") return glCreateShader(GL_FRAGMENT_SHADER);
     else if (ext == "vert") return glCreateShader(GL_VERTEX_SHADER);
     else                    return false;
 }
