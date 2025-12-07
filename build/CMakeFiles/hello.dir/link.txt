@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/hello.dir/hello.c.o -o hello  -Wl,-rpath,/home/david/projects/WeeHub/build/vendored/SDL vendored/SDL/libSDL3.so.0.3.4 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so 

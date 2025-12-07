@@ -1,0 +1,8 @@
+/home/david/projects/WeeHub/build/CMakeFiles/hello.dir
+/home/david/projects/WeeHub/build/CMakeFiles/edit_cache.dir
+/home/david/projects/WeeHub/build/CMakeFiles/rebuild_cache.dir
+/home/david/projects/WeeHub/build/vendored/SDL/CMakeFiles/SDL3-shared.dir
+/home/david/projects/WeeHub/build/vendored/SDL/CMakeFiles/SDL3_test.dir
+/home/david/projects/WeeHub/build/vendored/SDL/CMakeFiles/SDL_uclibc.dir
+/home/david/projects/WeeHub/build/vendored/SDL/CMakeFiles/edit_cache.dir
+/home/david/projects/WeeHub/build/vendored/SDL/CMakeFiles/rebuild_cache.dir
