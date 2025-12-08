@@ -118,19 +118,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hello
-
-# Build rule for target.
-hello: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello
-.PHONY : hello
-
-# fast build rule for target.
-hello/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/build
-.PHONY : hello/fast
-
-#=============================================================================
 # Target rules for targets named SDL3-shared
 
 # Build rule for target.
@@ -140,7 +127,7 @@ SDL3-shared: cmake_check_build_system
 
 # fast build rule for target.
 SDL3-shared/fast:
-	$(MAKE) $(MAKESILENT) -f vendored/SDL/CMakeFiles/SDL3-shared.dir/build.make vendored/SDL/CMakeFiles/SDL3-shared.dir/build
+	$(MAKE) $(MAKESILENT) -f vendor/SDL/CMakeFiles/SDL3-shared.dir/build.make vendor/SDL/CMakeFiles/SDL3-shared.dir/build
 .PHONY : SDL3-shared/fast
 
 #=============================================================================
@@ -153,7 +140,7 @@ SDL3_test: cmake_check_build_system
 
 # fast build rule for target.
 SDL3_test/fast:
-	$(MAKE) $(MAKESILENT) -f vendored/SDL/CMakeFiles/SDL3_test.dir/build.make vendored/SDL/CMakeFiles/SDL3_test.dir/build
+	$(MAKE) $(MAKESILENT) -f vendor/SDL/CMakeFiles/SDL3_test.dir/build.make vendor/SDL/CMakeFiles/SDL3_test.dir/build
 .PHONY : SDL3_test/fast
 
 #=============================================================================
@@ -166,32 +153,21 @@ SDL_uclibc: cmake_check_build_system
 
 # fast build rule for target.
 SDL_uclibc/fast:
-	$(MAKE) $(MAKESILENT) -f vendored/SDL/CMakeFiles/SDL_uclibc.dir/build.make vendored/SDL/CMakeFiles/SDL_uclibc.dir/build
+	$(MAKE) $(MAKESILENT) -f vendor/SDL/CMakeFiles/SDL_uclibc.dir/build.make vendor/SDL/CMakeFiles/SDL_uclibc.dir/build
 .PHONY : SDL_uclibc/fast
 
-hello.o: hello.c.o
-.PHONY : hello.o
+#=============================================================================
+# Target rules for targets named Weehub
 
-# target to build an object file
-hello.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.c.o
-.PHONY : hello.c.o
+# Build rule for target.
+Weehub: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Weehub
+.PHONY : Weehub
 
-hello.i: hello.c.i
-.PHONY : hello.i
-
-# target to preprocess a source file
-hello.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.c.i
-.PHONY : hello.c.i
-
-hello.s: hello.c.s
-.PHONY : hello.s
-
-# target to generate assembly for a file
-hello.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.c.s
-.PHONY : hello.c.s
+# fast build rule for target.
+Weehub/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/Weehub.dir/build.make src/CMakeFiles/Weehub.dir/build
+.PHONY : Weehub/fast
 
 # Help Target
 help:
@@ -204,10 +180,7 @@ help:
 	@echo "... SDL3-shared"
 	@echo "... SDL3_test"
 	@echo "... SDL_uclibc"
-	@echo "... hello"
-	@echo "... hello.o"
-	@echo "... hello.i"
-	@echo "... hello.s"
+	@echo "... Weehub"
 .PHONY : help
 
 
