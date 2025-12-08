@@ -9,7 +9,18 @@ NC='\033[0m' # No Color
 echo -e "${YELLOW}=== Building WeeHub ===${NC}"
 
 # Navigate to build directory
-cd build || exit 1
+if [ ! -d "build" ]; then
+    mkdir build
+    cd build
+    cmake ..
+else
+    if [ -z "$(ls -A 'build/')"]; then
+        cd build
+        cmake ..
+    else
+        cd build
+    fi
+fi
 
 # Build the project
 if cmake --build .; then
