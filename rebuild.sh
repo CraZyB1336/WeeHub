@@ -14,7 +14,7 @@ if [ ! -d "build" ]; then
     cd build
     cmake ..
 else
-    if [ -z "$(ls -A 'build/')"]; then
+    if [ -z "$(ls -A 'build/')" ]; then
         cd build
         cmake ..
     else
