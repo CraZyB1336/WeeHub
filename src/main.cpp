@@ -1,5 +1,6 @@
 #include <SDL3/SDL.h>
 #include "core/App.h"
+#include "../include/nuklear.h"
 
 int main(int argc, char* argv[]) {
     try{
