@@ -2,6 +2,8 @@
 
 #include <memory>
 #include "Window.h"
+#include "../renderer/Renderer.h"
+#include "../scene/SceneManager.h"
 
 class Window;
 class Renderer;
@@ -9,6 +11,7 @@ class Input;
 class SceneManager;
 class AudioManager;
 class Timer;
+
 class App {
     public:
         App();
@@ -22,12 +25,13 @@ class App {
         void Render();
 
         std::unique_ptr<Window> window;
-        // std::unique_ptr<Renderer> renderer;
+        std::unique_ptr<Renderer> renderer;
         // std::unique_ptr<Input> input;
-        // std::unique_ptr<SceneManager> sceneManager;
+        std::unique_ptr<SceneManager> sceneManager;
         // std::unique_ptr<AudioManager> audioManager;
-        // std::unique_ptr<Timer> timer;
 
         bool isRunning;
         SDL_Event event;
+        int deltaTime;
+        int fpsCounter;
 };

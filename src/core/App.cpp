@@ -5,40 +5,38 @@
 App::App(): isRunning(true)
 {
     window = std::make_unique<Window>(800, 600, "WeeHub");
+    renderer = std::make_unique<Renderer>(window->sdl_window);
+    sceneManager = std::make_unique<SceneManager>();
 }
 App::~App()
 {}
 
 void App::Run(){
     while(isRunning){
+        deltaTime = SDL_GetTicks();
+        // ProcessEvents();
+        Update(deltaTime);
         Render();
+        fpsCounter++;
+        deltaTime = SDL_GetTicks() - deltaTime;
+        std::cout << "Frame Time: " << deltaTime << " ms, FPS: " << (1000.0f / deltaTime) << "\r";
     }
     SDL_Quit();
 }
 
-void App::ProcessEvents(){
-    // Process input events
-}
+// void App::ProcessEvents(){
+//     // Process input events
+// }
 
 void App::Update(){
     // Update application state
 }
 
-void App::Render(){
+void App::Render(){  
     while (SDL_PollEvent(&event)){
         if(event.type == SDL_EVENT_QUIT){
             isRunning = false;
         }
     }
-    glClear(GL_COLOR_BUFFER_BIT);
-    // Draw test quad
-    glBegin(GL_QUADS);
-    glColor3f(1,1,0);
-    glVertex2f(-0.5f, -0.1f);
-    glVertex2f(0.5f, -0.1f);
-    glVertex2f(0.5f, 0.1f);
-    glVertex2f(-0.5f, 0.1f);
-    glEnd();
-
-    window->SwapBuffers();
+    sceneManager->Render(*renderer);
 }

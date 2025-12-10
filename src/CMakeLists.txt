@@ -8,7 +8,6 @@ target_sources(${PROJECT_NAME} PRIVATE
     
     # Renderer
     renderer/Renderer.cpp
-    renderer/Camera.cpp
     renderer/Texture.cpp
     
     # UI
@@ -22,8 +21,6 @@ target_sources(${PROJECT_NAME} PRIVATE
     scene/SceneManager.cpp
     
     # Utils
-    #utils/Math.cpp
-    utils/Timer.cpp
     utils/Input.cpp
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE vendor)
