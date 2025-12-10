@@ -8,13 +8,18 @@ NC='\033[0m' # No Color
 
 echo -e "${YELLOW}=== Building WeeHub ===${NC}"
 
+if [ -z "$(ls -A 'vendor/SDL/')" ]; then
+        git submodule --init --recursive
+fi
+
+
 # Navigate to build directory
 if [ ! -d "build" ]; then
     mkdir build
     cd build
     cmake ..
 else
-    if [ -z "$(ls -A 'build/')"]; then
+    if [ -z "$(ls -A 'build/')" ]; then
         cd build
         cmake ..
     else
