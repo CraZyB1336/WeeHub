@@ -10,7 +10,7 @@ class SceneManager{
         ~SceneManager();
 
         void Update(float deltaTime);
-        void Render(Renderer& renderer);
+        void Render(SDL_Renderer& renderer);
         void ChangeScene(std::unique_ptr<Scene> newScene);
 
     private:

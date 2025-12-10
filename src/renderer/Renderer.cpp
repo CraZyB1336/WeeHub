@@ -23,14 +23,3 @@ void Renderer::Clear(){
 void Renderer::Present(){
     SDL_GL_SwapWindow(this->window);
 }
-
-
-void Renderer::DrawQuad(float x, float y, float width, float height, const Color& color){
-    glBegin(GL_QUADS);
-    glColor3f(color.r, color.g, color.b);
-    glVertex2f(x, y);
-    glVertex2f(x + width, y);
-    glVertex2f(x + width, y + height);
-    glVertex2f(x, y + height);
-    glEnd();
-}

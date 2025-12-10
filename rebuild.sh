@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 echo -e "${YELLOW}=== Building WeeHub ===${NC}"
 
 if [ -z "$(ls -A 'vendor/SDL/')" ]; then
-        git submodule --init --recursive
+        git submodule update --init --recursive
 fi
 
 

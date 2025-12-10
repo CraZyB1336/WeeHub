@@ -19,6 +19,7 @@ class Window{
         int GetWidth() const;
         int GetHeight() const;
         SDL_Window* sdl_window;
+        SDL_Renderer* sdl_renderer;
 
     private:
         int width;

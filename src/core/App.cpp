@@ -5,7 +5,7 @@
 App::App(): isRunning(true)
 {
     window = std::make_unique<Window>(800, 600, "WeeHub");
-    renderer = std::make_unique<Renderer>(window->sdl_window);
+    renderer = window->sdl_renderer;
     sceneManager = std::make_unique<SceneManager>();
 }
 App::~App()
@@ -15,7 +15,7 @@ void App::Run(){
     while(isRunning){
         deltaTime = SDL_GetTicks();
         // ProcessEvents();
-        Update(deltaTime);
+        // Update(deltaTime);
         Render();
         fpsCounter++;
         deltaTime = SDL_GetTicks() - deltaTime;

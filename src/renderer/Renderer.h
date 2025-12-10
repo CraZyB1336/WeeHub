@@ -2,7 +2,6 @@
 
 #include <SDL3/SDL.h>
 #include "Renderer.h"
-#include "../utils/Color.h"
 
 class Renderer{
     public:
@@ -10,8 +9,6 @@ class Renderer{
         ~Renderer();
 
         void Clear();
-
-        void DrawQuad(float x, float y, float width, float height, const Color& color);
 
         void Present();
 

@@ -7,7 +7,7 @@ SceneManager::SceneManager(){
 
 SceneManager::~SceneManager(){}
 
-void SceneManager::Render(Renderer& renderer){
+void SceneManager::Render(SDL_Renderer& renderer){
     if(currentScene){
         currentScene->Render(renderer);
     }
