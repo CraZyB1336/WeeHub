@@ -18,10 +18,9 @@ class Window{
         SDL_Window* GetNativeWindow() const;
         int GetWidth() const;
         int GetHeight() const;
-        SDL_Window* window;
+        SDL_Window* sdl_window;
 
     private:
-        SDL_GLContext glContext;
         int width;
         int height;
         bool shouldClose;
