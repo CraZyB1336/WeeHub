@@ -28,4 +28,5 @@ class MenuScene : public Scene {
         SDL_Texture** textures;
         SDL_Renderer* renderer;
         int delay;
+        SDL_FRect rect;
 };

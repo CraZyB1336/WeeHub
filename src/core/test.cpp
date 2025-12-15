@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
         return(2);
     }
 
-    if (!SDL_CreateWindowAndRenderer("animation demo", 0, 0, flags, &window, &renderer)) {
+    if (!SDL_CreateWindowAndRenderer("animation demo", 1600, 800, flags, &window, &renderer)) {
         SDL_Log("SDL_CreateWindowAndRenderer() failed: %s\n", SDL_GetError());
         return(2);
     }
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
 
         /* Show the window */
         SDL_SetWindowTitle(window, argv[i]);
-        SDL_SetWindowSize(window, w, h);
+        // SDL_SetWindowSize(window, w, h);
         SDL_ShowWindow(window);
 
         done = 0;
