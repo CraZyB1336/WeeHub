@@ -1,8 +1,8 @@
 #include "SceneManager.h"
 #include "MenuScene.h"
 
-SceneManager::SceneManager(){
-    currentScene = std::make_unique<MenuScene>();
+SceneManager::SceneManager(SDL_Renderer* renderer){
+    currentScene = std::make_unique<MenuScene>(renderer);
 }
 
 SceneManager::~SceneManager(){}

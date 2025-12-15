@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <iostream>
 #include <SDL3/SDL_opengl.h>
+#include <SDL3_image/SDL_image.h>
 
 Window::Window(int w, int h, const std::string& title)
     : width(w), height(h), shouldClose(false), sdl_window(nullptr), sdl_renderer(nullptr)

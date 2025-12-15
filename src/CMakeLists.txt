@@ -2,25 +2,26 @@ add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE 
     main.cpp
     
-    # Core
+    # # Core
     core/App.cpp
     core/Window.cpp
     
-    # Renderer
+    # # Renderer
     renderer/Renderer.cpp
     renderer/Texture.cpp
     
-    # UI
+    # # UI
     ui/Channel.cpp
     ui/ChannelGrid.cpp
     ui/Cursor.cpp
     
-    # Scene
+    # # Scene
     scene/Scene.cpp
     scene/MenuScene.cpp
     scene/SceneManager.cpp
     
-    # Utils
-    utils/Input.cpp
+    # # Utils
+    # utils/Input.cpp
+    # core/test.cpp
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE vendor)

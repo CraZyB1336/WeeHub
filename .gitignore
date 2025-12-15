@@ -1,1 +1,3 @@
 build/
+# Ignore assets while testing(❁´◡`❁)
+assets/
