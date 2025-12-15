@@ -29,4 +29,6 @@ class MenuScene : public Scene {
         SDL_Renderer* renderer;
         int delay;
         SDL_FRect rect;
+        SDL_FRect rect2;
+        // int renderFlag;
 };

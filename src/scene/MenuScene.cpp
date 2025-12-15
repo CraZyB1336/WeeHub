@@ -33,6 +33,7 @@ MenuScene::MenuScene(SDL_Renderer* renderer){
             SDL_RenderFillRect(renderer, &rect);
         }
     }
+    rect2 ={100, 100, 200, 100};
 }
 
 MenuScene::~MenuScene(){
@@ -49,7 +50,7 @@ MenuScene::~MenuScene(){
 }
 
 void MenuScene::Render(SDL_Renderer& renderer){
-    SDL_RenderTexture(&renderer, textures[current_frame],NULL,NULL);
+    SDL_RenderTexture(&renderer, textures[current_frame],NULL,&rect2);
     SDL_RenderPresent(&renderer);
     if (anim->delays[current_frame]) {
         delay = anim->delays[current_frame];
