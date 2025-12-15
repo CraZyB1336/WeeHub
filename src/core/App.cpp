@@ -15,7 +15,7 @@ void App::Run(){
     while(isRunning){
         deltaTime = SDL_GetTicks();
         // ProcessEvents();
-        // Update(deltaTime);
+        Update(deltaTime);
         Render();
         fpsCounter++;
         deltaTime = SDL_GetTicks() - deltaTime;
@@ -28,8 +28,8 @@ void App::Run(){
 //     // Process input events
 // }
 
-void App::Update(){
-    // Update application state
+void App::Update(int deltaTime){
+    sceneManager->Update(deltaTime);
 }
 
 void App::Render(){  

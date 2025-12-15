@@ -21,7 +21,7 @@ class App {
 
     private:
         void ProcessEvents();
-        void Update();
+        void Update(int deltaTime);
         void Render();
 
         std::unique_ptr<Window> window;
