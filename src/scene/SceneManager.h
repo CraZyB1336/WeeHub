@@ -6,7 +6,7 @@
 
 class SceneManager{
     public:
-        SceneManager();
+        SceneManager(SDL_Renderer* renderer);
         ~SceneManager();
 
         void Update(float deltaTime);

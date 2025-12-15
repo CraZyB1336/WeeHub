@@ -6,7 +6,7 @@ App::App(): isRunning(true)
 {
     window = std::make_unique<Window>(800, 600, "WeeHub");
     renderer = window->sdl_renderer;
-    sceneManager = std::make_unique<SceneManager>();
+    sceneManager = std::make_unique<SceneManager>(renderer);
 }
 App::~App()
 {}
@@ -33,6 +33,7 @@ void App::Update(){
 }
 
 void App::Render(){  
+    SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
     while (SDL_PollEvent(&event)){
         if(event.type == SDL_EVENT_QUIT){
             isRunning = false;

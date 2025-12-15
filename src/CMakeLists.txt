@@ -1,26 +1,27 @@
 add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE 
-    main.cpp
+    # main.cpp
     
-    # Core
-    core/App.cpp
-    core/Window.cpp
+    # # Core
+    # core/App.cpp
+    # core/Window.cpp
     
-    # Renderer
-    renderer/Renderer.cpp
-    renderer/Texture.cpp
+    # # Renderer
+    # renderer/Renderer.cpp
+    # renderer/Texture.cpp
     
-    # UI
-    ui/Channel.cpp
-    ui/ChannelGrid.cpp
-    ui/Cursor.cpp
+    # # UI
+    # ui/Channel.cpp
+    # ui/ChannelGrid.cpp
+    # ui/Cursor.cpp
     
-    # Scene
-    scene/Scene.cpp
-    scene/MenuScene.cpp
-    scene/SceneManager.cpp
+    # # Scene
+    # scene/Scene.cpp
+    # scene/MenuScene.cpp
+    # scene/SceneManager.cpp
     
-    # Utils
-    utils/Input.cpp
+    # # Utils
+    # utils/Input.cpp
+    core/test.cpp
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE vendor)
