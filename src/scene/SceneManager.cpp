@@ -8,9 +8,9 @@ SceneManager::SceneManager(SDL_Renderer* renderer){
 SceneManager::~SceneManager(){}
 
 void SceneManager::Update(int deltaTime){
-    if(currentScene){
-        currentScene->Update(deltaTime);
-    }
+    // if(currentScene){
+    //     currentScene->Update(deltaTime);
+    // }
 }
 
 void SceneManager::Render(SDL_Renderer& renderer){

@@ -36,15 +36,16 @@ MenuScene::MenuScene(SDL_Renderer* renderer){
 }
 
 MenuScene::~MenuScene(){
-    if (anim) {
-        IMG_FreeAnimation(anim);
-    }
     if (textures) {
         for(int i = 0; i<anim->count;i++){
             SDL_DestroyTexture(textures[i]);
         }
-        
     }
+    SDL_free(textures);
+    if (anim) {
+        IMG_FreeAnimation(anim);
+    }
+
 }
 
 void MenuScene::Render(SDL_Renderer& renderer){

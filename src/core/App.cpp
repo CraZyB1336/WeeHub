@@ -15,7 +15,7 @@ void App::Run(){
     while(isRunning){
         deltaTime = SDL_GetTicks();
         // ProcessEvents();
-        Update(deltaTime);
+        // Update(deltaTime);
         Render();
         fpsCounter++;
         deltaTime = SDL_GetTicks() - deltaTime;
