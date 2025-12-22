@@ -1,64 +1,30 @@
 #include "MenuScene.h"
 #include <cstdlib>
+#include <iostream>
 #include <SDL3/SDL_video.h>
 
 MenuScene::MenuScene(SDL_Renderer* renderer){
-    anim = IMG_LoadAnimation("../assets/toothless-toothless-dragon.gif");
-    if (!anim) {
-        SDL_Log("Failed to load animation: %s", SDL_GetError());
-        return;
-    }
-    anim_w = anim->w;
-    anim_h = anim->h;
-    SDL_Log("Animation loaded successfully: %d frames", anim->count);
-    textures = (SDL_Texture **)SDL_calloc(anim->count, sizeof(*textures));
-    int j,i;
-    for (j = 0; j < anim->count; ++j) {
-        textures[j] = SDL_CreateTextureFromSurface(renderer, anim->frames[j]);
-    }
+    egenRender = std::make_unique<Renderer>();
+    gifs.push_back(egenRender->LoadGIF("../assets/spinningbee.gif",renderer,100,100,200,100));
+    gifs.push_back(egenRender->LoadGIF("../assets/toothless-toothless-dragon.gif",renderer, 400,100,200,100));
+    std::cout << "init ferdig"<<"\n";
     current_frame = 0;
-
-
-    const SDL_Color col[2] = {
-        { 0x66, 0x66, 0x66, 0xff },
-        { 0x99, 0x99, 0x99, 0xff }
-    };
-    rect.w, rect.h = 8;
-    for (int y=0;y<anim_h; y+=8){
-        for (int x = 0; x< anim_w;x+=8){
-            i=(((x^y)>>3)&1);
-            SDL_SetRenderDrawColor(renderer, col[i].r, col[i].g,col[i].b,col[i].a);
-            rect.x = (float)x;
-            rect.y = (float)y;
-            SDL_RenderFillRect(renderer, &rect);
-        }
-    }
-    rect2 ={100, 100, 200, 100};
 }
 
 MenuScene::~MenuScene(){
-    if (textures) {
-        for(int i = 0; i<anim->count;i++){
-            SDL_DestroyTexture(textures[i]);
-        }
-    }
-    SDL_free(textures);
-    if (anim) {
-        IMG_FreeAnimation(anim);
-    }
-
+    // if (textures) {
+    //     for(int i = 0; i<anim->count;i++){
+    //         SDL_DestroyTexture(textures[i]);
+    //     }
+    // }
+    // SDL_free(textures);
+    // if (anim) {
+    //     IMG_FreeAnimation(anim);
+    // }
 }
 
 void MenuScene::Render(SDL_Renderer& renderer){
-    SDL_RenderTexture(&renderer, textures[current_frame],NULL,&rect2);
+    SDL_RenderClear(&renderer);
+    egenRender->DrawGif(&renderer, gifs);
     SDL_RenderPresent(&renderer);
-    if (anim->delays[current_frame]) {
-        delay = anim->delays[current_frame];
-    } else {
-        delay = 100;
-    }
-    SDL_Delay(delay);
-
-    current_frame = (current_frame + 1) % anim->count;
-
 }

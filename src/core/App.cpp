@@ -19,7 +19,6 @@ void App::Run(){
         Render();
         fpsCounter++;
         deltaTime = SDL_GetTicks() - deltaTime;
-        std::cout << "Frame Time: " << deltaTime << " ms, FPS: " << (1000.0f / deltaTime) << "\r";
     }
     SDL_Quit();
 }

@@ -4,6 +4,8 @@
 #include "../renderer/Renderer.h"
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/SDL.h>
+#include <memory>
+#include <vector>
 
 class MenuScene : public Scene {
     public:
@@ -20,6 +22,8 @@ class MenuScene : public Scene {
         // std::unique_ptr<Cursor> cursor;
         // Camera camera;
         IMG_Animation* anim = nullptr;
+        IMG_Animation* anim2 = nullptr;
+        SDL_Texture** textures2;
         int anim_w, anim_h;
         float frame_time = 0.0f;
         int current_frame = 0;
@@ -28,7 +32,10 @@ class MenuScene : public Scene {
         SDL_Texture** textures;
         SDL_Renderer* renderer;
         int delay;
-        SDL_FRect rect;
-        SDL_FRect rect2;
+        SDL_FRect gif;
+        SDL_FRect gif2;
         // int renderFlag;
+
+        std::vector<std::unique_ptr<Gif>> gifs;
+        std::unique_ptr<Renderer> egenRender;
 };
