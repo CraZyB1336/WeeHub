@@ -11,14 +11,19 @@ App::App(): isRunning(true)
 App::~App()
 {}
 
+float nowTime;
+float prevTime;
+
 void App::Run(){
     while(isRunning){
-        deltaTime = SDL_GetTicks();
+        nowTime = SDL_GetTicks();
+        deltaTime =( nowTime-prevTime)/1000.0f;
         // ProcessEvents();
-        // Update(deltaTime);
+        Update(0.1f);
         Render();
         fpsCounter++;
         deltaTime = SDL_GetTicks() - deltaTime;
+        prevTime = nowTime;
     }
     SDL_Quit();
 }
@@ -27,7 +32,7 @@ void App::Run(){
 //     // Process input events
 // }
 
-void App::Update(int deltaTime){
+void App::Update(float deltaTime){
     sceneManager->Update(deltaTime);
 }
 

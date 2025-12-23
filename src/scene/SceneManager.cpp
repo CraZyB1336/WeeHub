@@ -7,10 +7,10 @@ SceneManager::SceneManager(SDL_Renderer* renderer){
 
 SceneManager::~SceneManager(){}
 
-void SceneManager::Update(int deltaTime){
-    // if(currentScene){
-    //     currentScene->Update(deltaTime);
-    // }
+void SceneManager::Update(float deltaTime){
+    if(currentScene){
+        currentScene->Update(deltaTime);
+    }
 }
 
 void SceneManager::Render(SDL_Renderer& renderer){

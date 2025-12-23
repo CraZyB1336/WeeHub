@@ -3,6 +3,8 @@
 #include <iostream>
 #include <SDL3/SDL_video.h>
 
+const bool *keys = SDL_GetKeyboardState(nullptr);
+
 MenuScene::MenuScene(SDL_Renderer* renderer){
     egenRender = std::make_unique<Renderer>();
     gifs.push_back(egenRender->LoadGIF("../assets/spinningbee.gif",renderer,100,100,200,100));
@@ -21,6 +23,15 @@ MenuScene::~MenuScene(){
     // if (anim) {
     //     IMG_FreeAnimation(anim);
     // }
+}
+
+void MenuScene::Update(float deltaTime){
+    if (keys[SDL_SCANCODE_D]){
+        gifs[0]->destRect.x += 5.0f * deltaTime;
+    }
+    if (keys[SDL_SCANCODE_A]){
+        gifs[0]->destRect.x -= 5.0f * deltaTime;
+    }
 }
 
 void MenuScene::Render(SDL_Renderer& renderer){

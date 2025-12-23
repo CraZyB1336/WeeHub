@@ -12,13 +12,11 @@ void Renderer::DrawGif(SDL_Renderer* renderer, const std::vector<std::unique_ptr
     for (const auto& g : gifs){
         time = SDL_GetTicks();
         if (g->delayTime < time){
-            std::cout << "delay timers: " << g->delayTime << "  ||  "<<time<<"\r";
             g->currentFrame = (g->currentFrame+1)%g->anim->count;
             SDL_RenderTexture(renderer, g->textures[g->currentFrame],NULL,&g->destRect);
             g->delayTime = time + g->anim->delays[g->currentFrame];
         }
         SDL_RenderTexture(renderer, g->textures[g->currentFrame],NULL,&g->destRect);
-        std::cout << "delay timers: " << g->delayTime << "  ||  "<<time<<"\r";
     }
 }
 

@@ -13,7 +13,7 @@ class MenuScene : public Scene {
         ~MenuScene() override;
         // void OnEnter() override;
         // void OnExit() override;
-        // void Update(int deltaTime) override;
+        void Update(float deltaTime) override;
         void Render(SDL_Renderer& renderer) override;
         // void HandleInput(const Input& input) override;
     

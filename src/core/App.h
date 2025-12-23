@@ -21,7 +21,7 @@ class App {
 
     private:
         void ProcessEvents();
-        void Update(int deltaTime);
+        void Update(float deltaTime);
         void Render();
 
         std::unique_ptr<Window> window;
@@ -32,6 +32,6 @@ class App {
 
         bool isRunning;
         SDL_Event event;
-        int deltaTime;
+        float deltaTime;
         int fpsCounter;
 };
